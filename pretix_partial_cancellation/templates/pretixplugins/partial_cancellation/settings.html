@@ -1,0 +1,23 @@
+{% extends "pretixcontrol/event/settings_base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block inside %}
+    <h1>{% trans "Partial cancellation" %}</h1>
+    <p>
+        {% blocktrans trimmed %}
+            Allow customers to cancel individual tickets from a free order. The remaining tickets in the order will stay
+            valid.
+        {% endblocktrans %}
+    </p>
+    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_field form.partial_cancellation_enabled layout="horizontal" %}
+        <div class="form-group submit-group">
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Save" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

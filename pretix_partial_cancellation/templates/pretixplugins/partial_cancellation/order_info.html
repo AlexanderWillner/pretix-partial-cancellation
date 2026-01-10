@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load eventurl %}
+
+<div class="panel panel-default panel-cancellation">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {% trans "Cancel selected tickets" %}
+        </h3>
+    </div>
+    <div class="panel-body">
+        <p>
+            {% blocktrans trimmed %}
+                You can cancel individual tickets in this free order. The remaining tickets will stay valid.
+            {% endblocktrans %}
+        </p>
+        <a href="{% eventurl event "plugins:partial_cancellation:order.cancel.partial" secret=order.secret order=order.code %}"
+           class="btn btn-danger">
+            <span class="fa fa-minus-circle" aria-hidden="true"></span>
+            {% trans "Cancel selected tickets" %}
+        </a>
+    </div>
+</div>
