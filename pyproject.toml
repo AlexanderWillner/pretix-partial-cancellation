@@ -40,3 +40,9 @@ include = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["pretix_partial_cancellation"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.11",
+    "ty>=0.0.11",
+]

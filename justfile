@@ -24,6 +24,11 @@ publish: build
   @if [[ -z "${PYPI_TOKEN:-}" && -z "${UV_PUBLISH_TOKEN:-}" ]]; then echo "Set PYPI_TOKEN or UV_PUBLISH_TOKEN"; exit 1; fi
   @if [[ -n "${PYPI_TOKEN:-}" ]]; then {{UV}} publish --token "$PYPI_TOKEN"; else {{UV}} publish; fi
 
+# Lint with Ruff and Ty (Astral)
+lint:
+  @{{UV}} tool run ruff check .
+  @{{UV}} tool run --with "pretix>=2025.7.0" --with "django>=4.2" ty check .
+
 # Create a GitHub release and push a new version tag
 release:
   @if [[ -n $(git status --porcelain) ]]; then echo "Working tree not clean"; exit 1; fi
