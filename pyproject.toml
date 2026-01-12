@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "pretix-partial-cancellation"
 version = "0.0.2"
 description = "Allow customers to partially cancel free orders in pretix"
-readme = { file = "README.rst", content-type = "text/x-rst" }
+readme = "README.md"
 license = { text = "AGPL-3.0-or-later" }
 authors = [
   { name = "Alexander Willner" },
@@ -23,6 +23,7 @@ classifiers = [
 dependencies = [
   "pretix>=2025.7.0",
 ]
+requires-python = ">=3.10"
 
 [project.urls]
 Homepage = "https://github.com/AlexanderWillner/pretix-partial-cancellation"

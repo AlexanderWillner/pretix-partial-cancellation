@@ -36,6 +36,7 @@ release:
   echo "Current version: $current_version"; \
   read -r -p "New version: " new_version; \
   if [[ -z "$new_version" ]]; then echo "No version provided"; exit 1; fi; \
+  if [[ "$new_version" == "$current_version" ]]; then echo "New version matches current version"; exit 1; fi; \
   read -r -p "Release title: " release_title; \
   if [[ -z "$release_title" ]]; then echo "No release title provided"; exit 1; fi; \
   notes_file=$(mktemp); \
@@ -44,7 +45,8 @@ release:
   {{UV}} version "$new_version"; \
   git add pyproject.toml; \
   git commit -m "Release v$new_version"; \
-  git tag "v$new_version"; \
-  git push --follow-tags; \
+  git tag -a "v$new_version" -m "v$new_version"; \
+  git push; \
+  git push --tags; \
   gh release create "v$new_version" --title "$release_title" --notes-file "$notes_file"; \
   rm -f "$notes_file"
