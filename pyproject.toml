@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pretix-partial-cancellation"
-version = "0.0.1"
+version = "0.0.2"
 description = "Allow customers to partially cancel free orders in pretix"
 readme = { file = "README.rst", content-type = "text/x-rst" }
 license = { text = "AGPL-3.0-or-later" }
