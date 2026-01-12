@@ -1,3 +1,42 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pretix-partial-cancellation"
+version = "0.0.1"
+description = "Allow customers to partially cancel free orders in pretix"
+readme = { file = "README.rst", content-type = "text/x-rst" }
+license = { text = "AGPL-3.0-or-later" }
+authors = [
+  { name = "Alexander Willner" },
+]
+classifiers = [
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 4.2",
+  "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "pretix>=2025.7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/AlexanderWillner/pretix-partial-cancellation"
+
+[project.entry-points."pretix.plugin"]
+partial_cancellation = "pretix_partial_cancellation:PretixPluginMeta"
+
+[tool.hatch.build]
+include = [
+  "pretix_partial_cancellation/**",
+  "README.rst",
+  "LICENSE",
+  "MANIFEST.in",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pretix_partial_cancellation"]
